@@ -196,6 +196,7 @@ $(function(){
 		$(audio).on("timeupdate",function(){
 			current.html(format(audio.currentTime));
 			var left=progress.width() * audio.currentTime/audio.duration;
+//			console.log(progress.width())
 			pi.css("left",left);
 		})
 	//进度条拖拽
