@@ -204,9 +204,10 @@ $(function(){
 			var offsetx=e.originalEvent.changedTouches[0].clientX-pi.offset().left;
 			var r=pi.width()/2;
 			var start=r-offsetx;
+//			console.log(offsetx,r,start)
 			$(document).on('touchmove',function(e){
-				var left=e.originalEvent.changedTouches[0].clientX - progress.position().left;
-				var c=(left+start) / progress.width() * audio.duration;
+				var left=e.originalEvent.changedTouches[0].clientX - progress.position().left + start;
+				var c=left / progress.width() * audio.duration;
 				console.log(left,c)
 				if(c>=audio.duration||c<=0){
 					return;
