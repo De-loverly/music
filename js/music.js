@@ -192,11 +192,10 @@ $(function(){
 		$(audio).on("canplay",function(){
 			duration.html(format(audio.duration));
 		})
-		var left;
 		//歌曲当前已播放时长以及进度条的移动
 		$(audio).on("timeupdate",function(){
 			current.html(format(audio.currentTime));
-			left=progress.width() * audio.currentTime/audio.duration;
+			var left=progress.width() * audio.currentTime/audio.duration;
 //			console.log(progress.width())
 			pi.css("left",left);
 		})
@@ -204,12 +203,13 @@ $(function(){
 		pi.on("touchend",false);
 		pi.on('touchstart',function(e){
 			var offsetx=e.originalEvent.changedTouches[0].clientX-pi.offset().left;
+			console.log(e.originalEvent.changedTouches[0])
 			var r=pi.width()/2;
 			var start=r-offsetx;
-//			console.log(offsetx,r,start)
+			console.log(offsetx,r,start)
 			$(document).on('touchmove',function(e){
-				left=e.originalEvent.changedTouches[0].clientX - progress.position().left + start;
-				var c=left / progress.width() * audio.duration;
+				var left=e.originalEvent.changedTouches[0].clientX - progress.position().left + start;
+				var c=left/progress.width() * audio.duration;
 				console.log(left,c)
 				if(c>=audio.duration||c<=0){
 					return;
