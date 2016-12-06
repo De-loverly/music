@@ -196,7 +196,6 @@ $(function(){
 		$(audio).on("timeupdate",function(){
 			current.html(format(audio.currentTime));
 			var left=progress.width() * audio.currentTime/audio.duration;
-//			console.log(progress.width())
 			pi.css("left",left);
 		})
 	//进度条拖拽
@@ -205,10 +204,9 @@ $(function(){
 			var offsetx=e.originalEvent.changedTouches[0].clientX-pi.offset().left;
 			var r=pi.width()/2;
 			var start=r-offsetx;
-//			console.log(offsetx,r,start)
 			$(document).on('touchmove',function(e){
-				var left=e.originalEvent.changedTouches[0].clientX - progress.position().left + start;
-				var c=left / progress.width() * audio.duration;
+				var left=e.originalEvent.changedTouches[0].clientX - progress.position().left;
+				var c=(left+start) / progress.width() * audio.duration;
 				console.log(left,c)
 				if(c>=audio.duration||c<=0){
 					return;
@@ -243,7 +241,7 @@ $(function(){
 		$("#boxa").css({"opacity":"0"});
 		$("#ge").css("transform","translateX(0)")
 	})
-	$("#ge").on("touchend",function(){
+	$("#ge .touxiang").on("touchend",function(){
 		$("#boxa").css({"opacity":"1"});
 		$("#ge").css("transform","translateX(100%)")
 	})
