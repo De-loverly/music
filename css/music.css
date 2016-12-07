@@ -107,8 +107,9 @@ img {
 
 #nav .top-nav .navs {
   float: left;
-  padding: 0 0.1rem;
-  margin-left: 0.64rem;
+  width: 20%;
+  box-sizing: border-box;
+  padding: 0 0.1rem 0 0.4rem;
   line-height: 0.82rem;
   color: #0A0A0A;
   font-size: 18px;
