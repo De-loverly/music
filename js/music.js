@@ -185,9 +185,9 @@ $(function(){
 			return m+":"+s;
 		}
 		var progress=$(".progress #progress");
-		var pi=$(".progress .pi")
+		var pi=$(".progress .pi");
 		var duration=$(".progress .k");
-		var current=$(".progress .g")
+		var current=$(".progress .g");
 		//歌曲的结束时间
 		$(audio).on("canplay",function(){
 			duration.html(format(audio.duration));
@@ -203,12 +203,10 @@ $(function(){
 		pi.on("touchend",false);
 		pi.on('touchstart',function(e){
 			var offsetx=e.originalEvent.changedTouches[0].clientX-pi.offset().left;
-			console.log(e.originalEvent.changedTouches[0])
 			var r=pi.width()/2;
 			var start=r-offsetx;
-			console.log(offsetx,r,start)
 			$(document).on('touchmove',function(e){
-				var left=e.originalEvent.changedTouches[0].clientX - progress.position().left + start;
+				var left=e.originalEvent.changedTouches[0].clientX - progress.offset().left + start;
 				var c=left / progress.width() * audio.duration;
 				if(c>=audio.duration||c<=0){
 					return;
